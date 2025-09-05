@@ -1,9 +1,9 @@
 function CharacterFilters() {
     return (  
 
-        <div>
-            
-        </div>
+        <form>
+
+        </form>
     );
 }
 
