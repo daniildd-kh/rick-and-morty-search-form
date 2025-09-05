@@ -1,12 +1,9 @@
-import { Input } from "../components/ui/input";
+import CharacterFilters from "../components/feature/CharacterFilters";
 
 function SearchPage() {
-    return ( 
-        <main>
-            <h1>Вселенная Рик и Морти</h1>
-            <Input />
-        </main>
-     );
+  return(
+    <CharacterFilters/>
+  )
 }
 
 export default SearchPage;
