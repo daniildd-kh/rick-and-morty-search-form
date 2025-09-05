@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import {
   GENDERS,
   SPECIESES,
@@ -5,11 +6,16 @@ import {
   type Character,
 } from "../../constants/characters";
 
-export const CharacterCard = ({ character }: { character: Character }) => {
+interface CharacterCardProps{
+  character: Character, 
+  onClick: (character:Character) => void;
+}
+
+export const CharacterCard: FC<CharacterCardProps>= ({ character, onClick }) => {
   const { name, gender, species, status, type } = character;
 
   return (
-    <div className="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-200 bg-white">
+    <div onClick={() => onClick(character)} className="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-200 bg-white">
       <p className="font-bold">{name}:</p>
 
       <p className="text-sm ">
