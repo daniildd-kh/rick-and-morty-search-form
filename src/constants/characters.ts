@@ -1,6 +1,6 @@
 export const STATUSES = {
-  dead: "Нет",
-  alive: "Да",
+  dead: "Мёртв",
+  alive: "Жив",
   unknown: "Неизвестно",
 } as const;
 
@@ -17,12 +17,22 @@ export const SPECIESES = {
 
 export type SpeciesType = keyof typeof SPECIESES | "";
 
+export const GENDERS = {
+  female: "Женский",
+  male: "Мужской",
+  genderless: "Бесполый",
+  unknown: "Неизвестно",
+} as const;
+
+export type GenderType = keyof typeof GENDERS | "";
+
 export interface Character {
-    name: string;
-    gender: string;
-    species: SpeciesType;
-    status: StatusType;
-    type: string;
-    url: string;
-    img: string;
+  id: string;
+  name: string;
+  gender: GenderType;
+  species: SpeciesType;
+  status: StatusType;
+  type: string;
+  url: string;
+  img: string;
 }
