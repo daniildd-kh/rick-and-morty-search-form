@@ -2,25 +2,13 @@ import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { Input } from "../ui/input";
 import { Select } from "../ui/select";
 import { useDebounce } from "../../hooks/useDebounce";
-
-const STATUSES = {
-  dead: "Нет",
-  alive: "Да",
-  unknown: "Неизвестно",
-} as const;
-
-type StatusType = keyof typeof STATUSES | "";
-
-const SPECIESES = {
-  human: "Человек",
-  poopybutthole: "Пупибатхол",
-  aliene: "Bнопланетянин",
-  humanoid: "Гуманоид",
-  cronenberg: "Кроненберг",
-  unknown: "Неизвестно",
-} as const;
-
-type SpeciesType = keyof typeof SPECIESES | "";
+import {
+  SPECIESES,
+  STATUSES,
+  type SpeciesType,
+  type StatusType,
+} from "../../constants/characters";
+import { useCharacters } from "../../hooks/useCharacters";
 
 interface FormData {
   name: string;
@@ -30,7 +18,8 @@ interface FormData {
 }
 
 function CharacterFilters() {
-const [formData, setFormData] = useState<FormData>({
+  const { characters, setCharacters } = useCharacters();
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     status: "",
     species: "",
@@ -51,7 +40,7 @@ const [formData, setFormData] = useState<FormData>({
     const url = query ? `${baseUrl}?${query}` : baseUrl;
     const response = await fetch(url);
     const result = await response.json();
-    console.log(result);
+    setCharacters(result.results || []);
   };
 
   const isFirstRender = useRef(true);

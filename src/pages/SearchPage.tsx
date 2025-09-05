@@ -1,4 +1,4 @@
-import CharacterFilters from "../components/feature/CharacterFilters";
+import CharacterFilters from "../components/feature/character-filters";
 
 function SearchPage() {
   return(
