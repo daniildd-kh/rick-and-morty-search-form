@@ -6,11 +6,27 @@ import { Modal } from "../ui/modal";
 import { CharacterDetail } from "./character-detail";
 
 export const CharacterList = () => {
-  const { characters } = useAppContext();
+  const { characters, isLoading, error } = useAppContext();
 
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
     null
   );
+
+  if (isLoading) {
+    return <p className="text-center p-10">Загрузка персонажей...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center text-red-500 p-10">Ошибка: {error}</p>;
+  }
+
+  if (!characters || characters.length === 0) {
+    return (
+      <p className="text-center p-10">
+        Для поиска по персонажам используйте форму
+      </p>
+    );
+  }
 
   const handleCardClick = (character: Character) => {
     setSelectedCharacter(character);

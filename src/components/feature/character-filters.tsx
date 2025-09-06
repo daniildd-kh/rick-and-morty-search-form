@@ -9,6 +9,7 @@ import {
   type StatusType,
 } from "../../constants/characters";
 import { useAppContext } from "../../hooks/useAppContext";
+import { fetchCharacters } from "../../api/rick-and-morty-api";
 
 interface FormData {
   name: string;
@@ -18,40 +19,54 @@ interface FormData {
 }
 
 function CharacterFilters() {
-  const { characters, setCharacters } = useAppContext();
-  const [formData, setFormData] = useState<FormData>({
+  const { setCharacters, setIsLoading, setError } = useAppContext();
+  const initialData = {
     name: "",
     status: "",
     species: "",
     episode: "",
+  };
+  const [formData, setFormData] = useState<FormData>(() => {
+    try {
+      const savedData = localStorage.getItem("formData");
+      if (savedData) {
+        return JSON.parse(savedData);
+      }
+    } catch (error) {}
+    return initialData;
   });
 
   const debouncedData = useDebounce<FormData>(formData, 300);
-
-  const fetchFormData = async (data: FormData) => {
-    const baseUrl = `https://rickandmortyapi.com/api/character/`;
-    const params = new URLSearchParams();
-    Object.entries(data).forEach(([key, value]) => {
-      if (value) {
-        params.append(key, value);
-      }
-    });
-    const query = params.toString();
-    const url = query ? `${baseUrl}?${query}` : baseUrl;
-    const response = await fetch(url);
-    const result = await response.json();
-    setCharacters(result.results || []);
-  };
-
   const isFirstRender = useRef(true);
 
   useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const characters = await fetchCharacters(debouncedData);
+        setCharacters(characters);
+      } catch (e) {
+        if (e instanceof Error) {
+          setError(e.message);
+        }
+        setCharacters([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      return;
+      fetchData();
+    } else {
+      fetchData();
     }
-    fetchFormData(debouncedData);
-  }, [debouncedData]);
+  }, [debouncedData, setCharacters, setError, setIsLoading]);
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
