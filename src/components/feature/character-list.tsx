@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useCharacters } from "../../hooks/useCharacters";
+import { useAppContext } from "../../hooks/useAppContext";
 import { CharacterCard } from "./character-card";
 import type { Character } from "../../constants/characters";
 import { Modal } from "../ui/modal";
 import { CharacterDetail } from "./character-detail";
 
 export const CharacterList = () => {
-  const { characters } = useCharacters();
+  const { characters } = useAppContext();
 
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
     null

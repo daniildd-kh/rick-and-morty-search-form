@@ -32,9 +32,12 @@ export const Modal: FC<ModalProps> = ({ onClose, isOpen, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md p-6 min-h-[300px] border-black border-2 bg-blue text-text shadow-md"
+        className="relative min-w-[300px] max-w-[600px]  p-6  border-black border-2 bg-blue text-text shadow-md"
       >
-        <button onClick={onClose} className="absolute right-1 top-1 text-text cursor-pointer">
+        <button
+          onClick={onClose}
+          className="absolute right-1 top-1 text-text cursor-pointer"
+        >
           <X size={24} />
         </button>
         <div className="rounded-md bg-white border-2 w-full min-h-[300px] h-full p-2">

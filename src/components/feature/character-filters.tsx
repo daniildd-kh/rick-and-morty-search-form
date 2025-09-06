@@ -8,7 +8,7 @@ import {
   type SpeciesType,
   type StatusType,
 } from "../../constants/characters";
-import { useCharacters } from "../../hooks/useCharacters";
+import { useAppContext } from "../../hooks/useAppContext";
 
 interface FormData {
   name: string;
@@ -18,7 +18,7 @@ interface FormData {
 }
 
 function CharacterFilters() {
-  const { characters, setCharacters } = useCharacters();
+  const { characters, setCharacters } = useAppContext();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     status: "",
@@ -85,20 +85,20 @@ function CharacterFilters() {
           onChange={handleChange}
         />
         <div className="flex justify-between gap-2">
-                  <Select
-          label="Жив?"
-          name="status"
-          value={formData.status}
-          options={statusOptions}
-          onChange={handleChange}
-        />
-        <Select
-          label="Раса"
-          name="species"
-          value={formData.species}
-          options={speciesOptions}
-          onChange={handleChange}
-        />
+          <Select
+            label="Жив?"
+            name="status"
+            value={formData.status}
+            options={statusOptions}
+            onChange={handleChange}
+          />
+          <Select
+            label="Раса"
+            name="species"
+            value={formData.species}
+            options={speciesOptions}
+            onChange={handleChange}
+          />
         </div>
 
         <Input

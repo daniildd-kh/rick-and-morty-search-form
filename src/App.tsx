@@ -1,11 +1,11 @@
-import { CharacterProvider } from "./context/сharacter-provider";
+import { AppProvider } from "./context/app-provider";
 import SearchPage from "./pages/search-page";
 
 function App() {
   return (
-    <CharacterProvider>
+    <AppProvider>
       <SearchPage />
-    </CharacterProvider>
+    </AppProvider>
   );
 }
 
