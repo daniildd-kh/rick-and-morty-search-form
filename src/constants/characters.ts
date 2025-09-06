@@ -34,5 +34,7 @@ export interface Character {
   status: StatusType;
   type: string;
   url: string;
-  img: string;
+  image: string;
+  origin: {name: string};
+  location: {name: string};
 }

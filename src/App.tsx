@@ -1,5 +1,5 @@
 import { CharacterProvider } from "./context/сharacter-provider";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/search-page";
 
 function App() {
   return (

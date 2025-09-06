@@ -3,12 +3,14 @@ import { useCharacters } from "../../hooks/useCharacters";
 import { CharacterCard } from "./character-card";
 import type { Character } from "../../constants/characters";
 import { Modal } from "../ui/modal";
+import { CharacterDetail } from "./character-detail";
 
 export const CharacterList = () => {
   const { characters } = useCharacters();
 
-  const [selectedCharacter, setSelectedCharacter] =
-    useState<Character | null>();
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
+    null
+  );
 
   const handleCardClick = (character: Character) => {
     setSelectedCharacter(character);
@@ -30,7 +32,7 @@ export const CharacterList = () => {
         ))}
       </div>
       <Modal isOpen={!!selectedCharacter} onClose={handleCloseModal}>
-        {selectedCharacter && <div className="text-gray-900">{selectedCharacter.name}</div>}
+        {selectedCharacter && <CharacterDetail character={selectedCharacter} />}
       </Modal>
     </>
   );
