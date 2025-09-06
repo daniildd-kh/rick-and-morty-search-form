@@ -89,8 +89,8 @@ function CharacterFilters() {
   ];
 
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Вселенная Рик и Морти</h1>
+    <main className="p-4 flex flex-col gap-4">
+      <h1 className="text-3xl font-bold">Вселенная Рик и Морти</h1>
       <form className="flex flex-col gap-2 bg-white p-6 border-2 border-black shadow-md">
         <Input
           label="Имя персонажа"

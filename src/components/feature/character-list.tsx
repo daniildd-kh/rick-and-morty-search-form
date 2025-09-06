@@ -37,7 +37,8 @@ export const CharacterList = () => {
   };
 
   return (
-    <>
+    <div>
+      <h2 className="text-subtitle font-bold">Найдено:</h2>
       <div className="flex flex-col gap-6 w-full">
         {characters?.map((character) => (
           <CharacterCard
@@ -50,6 +51,6 @@ export const CharacterList = () => {
       <Modal isOpen={!!selectedCharacter} onClose={handleCloseModal}>
         {selectedCharacter && <CharacterDetail character={selectedCharacter} />}
       </Modal>
-    </>
+    </div>
   );
 };
