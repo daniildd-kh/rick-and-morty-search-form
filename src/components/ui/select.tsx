@@ -28,7 +28,7 @@ export const Select: FC<SelectProps> = ({
     <div className="w-full">
       {label && (
         <label
-          className="block mb-1 text-sm font-medium text-gray-600"
+          className="block mb-1 text-sm font-medium text-text"
           htmlFor={name}
         >
           {label}
@@ -42,7 +42,7 @@ export const Select: FC<SelectProps> = ({
           value={value}
           className={clsx([
             className,
-            "block w-full px-2 py-1 rounded border-gray-200 placeholder-gray-400 border focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-150 ease-in-out appearance-none",
+            "block w-full px-2 py-1 text-text placeholder-text/60 bg-banana border-black border-2 rounded-md outline-blue transition duration-150 ease-in-out appearance-none",
           ])}
         >
           {options.map((option) => (

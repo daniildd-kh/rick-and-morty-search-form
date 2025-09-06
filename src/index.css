@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@theme {
+  --color-text: #2C2C2C;
+  --color-background: #FEF7ED;
+  --color-blue: #61A5FA;
+  --color-pink: #F472B6;
+  --color-banana: #FFDC58;
+
+  --font-display: "Comic Relief", system-ui;
+  --shadow-md: 5px 5px 0px black; 
+  --text-base: 20px;
+  --text-subtitle: 24px;
+  --text-title: 65px;
+}
+
+
 /* reset css
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
@@ -21,8 +36,9 @@
 body {
   /* 4. Add accessible line-height */
   line-height: 1.5;
-  /* 5. Improve text rendering */
+  font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
+  background-color: var(--color-background);
 }
 
 /* 6. Improve media defaults */

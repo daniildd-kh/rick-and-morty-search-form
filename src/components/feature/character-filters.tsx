@@ -26,7 +26,7 @@ function CharacterFilters() {
     episode: "",
   });
 
-  const debouncedData = useDebounce<FormData>(formData, 500);
+  const debouncedData = useDebounce<FormData>(formData, 300);
 
   const fetchFormData = async (data: FormData) => {
     const baseUrl = `https://rickandmortyapi.com/api/character/`;
@@ -76,7 +76,7 @@ function CharacterFilters() {
   return (
     <main className="p-4">
       <h1 className="text-2xl font-bold mb-4">Вселенная Рик и Морти</h1>
-      <form className="flex flex-col gap-4 w-[600px]">
+      <form className="flex flex-col gap-2 bg-white p-6 border-2 border-black shadow-md">
         <Input
           label="Имя персонажа"
           placeholder="rick"
@@ -84,7 +84,8 @@ function CharacterFilters() {
           value={formData.name}
           onChange={handleChange}
         />
-        <Select
+        <div className="flex justify-between gap-2">
+                  <Select
           label="Жив?"
           name="status"
           value={formData.status}
@@ -98,6 +99,8 @@ function CharacterFilters() {
           options={speciesOptions}
           onChange={handleChange}
         />
+        </div>
+
         <Input
           label="Эпизод"
           name="episode"

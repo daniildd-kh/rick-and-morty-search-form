@@ -20,7 +20,7 @@ export const CharacterList = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6 w-full">
         {characters?.map((character) => (
           <CharacterCard
             key={character.id}

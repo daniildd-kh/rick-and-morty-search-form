@@ -24,7 +24,7 @@ export const Input: FC<InputProps> = ({
     <div className="w-full">
       {label && (
         <label
-          className="block mb-1 text-sm font-medium text-gray-600"
+          className="block mb-1 text-sm font-medium text-text"
           htmlFor={name}
         >
           {label}
@@ -33,7 +33,7 @@ export const Input: FC<InputProps> = ({
       <input
         className={clsx([
           className,
-          "block w-full px-2 py-1 rounded border-gray-200 placeholder-gray-400 border focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-150 ease-in-out",
+          "block w-full px-2 py-1 border-black border-2 rounded-md placeholder-text/60 transition duration-150 ease-in-out bg-banana outline-blue",
         ])}
         id={name}
         name={name}
